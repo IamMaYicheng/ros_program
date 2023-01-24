@@ -35,7 +35,7 @@ class image_converter:
         (x, y, w, h) = cv2.boundingRect(contours[0])  # 返回矩阵四个点的坐标
         cv2.rectangle(cv_image, (x, y), (x + w, y + h), (0, 0, 255), 3)  # 绘制矩形
         
-        # 再将opencv格式额数据转换成ros image格式的数据发布
+        # 再将opencv格式的数据转换成ros image格式的数据发布
         try:
             self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
         except CvBridgeError as e:
